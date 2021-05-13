@@ -3,32 +3,29 @@
 \alias{DX.generator}
 \docType{package}
 \title{
-  A short title line describing what the package does
+  Generates Random Unifrom Numbers using the DX algorthim
 }
 \description{
-  A more detailed description of what the package does. A length
-  of about one to five lines is recommended.
+  This package is designed to provide a faster alternative to the default RNGs within R. This random number generator is .......
 }
 \details{
+  
   This section should provide a more detailed overview of how to use the
   package, including the most important functions.
 }
 \author{
-Your Name, email optional.
+Lih-Yuan Deng
 
-Maintainer: Your Name <your@email.com>
+Maintainer: Jon McCurdy <jonmccurdy@ymail.com>
 }
 \references{
-  This optional section can contain literature or other references for
-  background information.
+  Will link a wedbsite explaining the DX-generator
 }
 \keyword{ package }
 \seealso{
   Optional links to other man pages
 }
 \examples{
-  \dontrun{
-     ## Optional simple examples of the most important functions
-     ## These can be in \dontrun{} and \donttest{} blocks.   
-  }
+    set.seed(1234)
+    dx_runif(10)
 }

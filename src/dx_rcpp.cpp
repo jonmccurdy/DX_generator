@@ -37,6 +37,12 @@ long long DX1()
   return XX[I_X];
 }
 
+//' Gets the Random Numbers
+//'
+//' @param nTry number of observations
+//' @param seed seed to configure RNG
+//' @param k DX parameter
+//' @return nTry random numbers
 // [[Rcpp::export]]
 Rcpp::NumericVector rand_test(int nTry, int seed, int k) {
   NumericVector YY= no_init_vector(nTry);

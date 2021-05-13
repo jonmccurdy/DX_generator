@@ -1,11 +1,11 @@
 Package: DX.generator
 Type: Package
-Title: What the Package Does in One 'Title Case' Line
+Title: Generates Random Numbers using the a DX algorithm
 Version: 1.0
 Date: 2021-05-12
-Author: Your Name
-Maintainer: Your Name <your@email.com>
-Description: One paragraph description of what the package does as one or more full sentences.
+Author: Lih-Yuan Deng
+Maintainer: Jon McCurdy <jonmccurdy@ymail.com>
+Description: Acts as an alternative random number generator to the default ones that R provides.
 License: GPL (>= 2)
 Imports: Rcpp (>= 1.0.6)
 LinkingTo: Rcpp
