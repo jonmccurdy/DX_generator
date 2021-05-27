@@ -19,12 +19,12 @@ static Int32 seed;
 static double res;
 static int nseed = 1;
 
-void DX_Init(Int32 seed_in)
+void DX_Init(Int32 seed)
 {
   int i;
   K_X=K_X1;
   T_X=T_X1;
-  srand(seed_in);
+  srand(seed);
   
   for (i=0; i<K_X; i++) XX[i] = rand() & PP;
   
@@ -33,6 +33,7 @@ void DX_Init(Int32 seed_in)
 
 double * user_unif_rand()
 {
+  DX_Init(seed);
   int II0 = I_X;
   if(++I_X >= K_X)  I_X = 0;     /*wrap around running index */
   XX[I_X] = MODP(B_X1 * XX[I_X] + XX[II0]);
@@ -40,6 +41,6 @@ double * user_unif_rand()
   return &res;
 }
 
-void  user_unif_init(Int32 seed_in) { DX_Init(seed_in); }
+void  user_unif_init(Int32 seed_in) { seed = seed_in;}
 int * user_unif_nseed() { return &nseed; }
 int * user_unif_seedloc() { return (int *) &seed; }
