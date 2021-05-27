@@ -6,7 +6,7 @@ using namespace Rcpp;
 
 #define K_MAX	3500
 #define PP 2147483647  //2^31-1
-#define B_X1 536869888 //LYD:
+#define B_X1 536869888 
 #define K_X1 47
 #define T_X1 1
 
@@ -19,12 +19,12 @@ static Int32 seed;
 static double res;
 static int nseed = 1;
 
-void DX_Init(Int32 seed)
+void DX_Init(Int32 seed_in)
 {
   int i;
   K_X=K_X1;
   T_X=T_X1;
-  srand(seed);
+  srand(seed_in);
   
   for (i=0; i<K_X; i++) XX[i] = rand() & PP;
   
@@ -36,15 +36,11 @@ double * user_unif_rand()
   int II0 = I_X;
   if(++I_X >= K_X)  I_X = 0;     /*wrap around running index */
   XX[I_X] = MODP(B_X1 * XX[I_X] + XX[II0]);
-  res = (double) XX[I_X] * 2.32830643653869e-10;
+  res = (double) XX[I_X] /(double) PP;
   return &res;
 }
 
-void  user_unif_init(Int32 seed_in) { 
-  DX_Init(seed_in);
-  printf("Received seed: %u\n", seed_in);
-  seed = seed_in;
-  }
 
+void  user_unif_init(Int32 seed_in) { seed = seed_in; DX_Init((unsigned int)seed_in);}
 int * user_unif_nseed() { return &nseed; }
 int * user_unif_seedloc() { return (int *) &seed; }
