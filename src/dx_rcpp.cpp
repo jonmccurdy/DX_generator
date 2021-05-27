@@ -40,6 +40,11 @@ double * user_unif_rand()
   return &res;
 }
 
-void  user_unif_init(Int32 seed_in) { seed = seed_in; DX_Init(seed);}
+void  user_unif_init(Int32 seed_in) { 
+  DX_Init(seed_in);
+  printf("Received seed: %u\n", seed_in);
+  seed = seed_in;
+  }
+
 int * user_unif_nseed() { return &nseed; }
 int * user_unif_seedloc() { return (int *) &seed; }
