@@ -33,7 +33,6 @@ void DX_Init(Int32 seed)
 
 double * user_unif_rand()
 {
-  DX_Init(seed);
   int II0 = I_X;
   if(++I_X >= K_X)  I_X = 0;     /*wrap around running index */
   XX[I_X] = MODP(B_X1 * XX[I_X] + XX[II0]);
@@ -41,6 +40,6 @@ double * user_unif_rand()
   return &res;
 }
 
-void  user_unif_init(Int32 seed_in) { seed = seed_in;}
+void  user_unif_init(Int32 seed_in) { seed = seed_in; DX_Init(seed);}
 int * user_unif_nseed() { return &nseed; }
 int * user_unif_seedloc() { return (int *) &seed; }
